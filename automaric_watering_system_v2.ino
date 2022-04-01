@@ -10,6 +10,7 @@ Adafruit_SSD1306 display(OLED_RESET);
 int sens_1 = A2;
 int sens_2 = A3;
 int motor_pin = 8;
+int led=11;
 
 void setup(){
 
@@ -20,18 +21,19 @@ void setup(){
   pinMode(sens_1, INPUT);
   pinMode(sens_2, INPUT);
   pinMode(motor_pin, OUTPUT);
+  pinMode(led,OUTPUT);
 }
 
 void loop(){
   float sen_1_read = analogRead(sens_1);
   float sen_2_read = analogRead(sens_2);
 
-//  Serial.print("");
-//  Serial.print("Sensor 1:");
-//  Serial.println(sens_1_read);
-//  Serial.print("Sensor 2:");
-//  Serial.print(sens_2_read);
-//  Serial.println("");
+  Serial.print("");
+  Serial.print("Sensor 1:");
+  Serial.println(sen_1_read);
+  Serial.print("Sensor 2:");
+  Serial.print(sen_2_read);
+  Serial.println("");
 
   display.setTextSize(1);
   display.setTextColor(WHITE);
@@ -44,5 +46,27 @@ void loop(){
   display.clearDisplay();
   delay(1000);
 
-  digitalWrite(motor_pin, HIGH);
+  if (sen_1_read < 300){
+   
+//    digitalWrite(led,HIGH);
+//    delay(1000);
+//    digitalWrite(led,LOW);
+//    delay(1000);
+    
+    digitalWrite(motor_pin,HIGH);
+    delay(2000);
+    digitalWrite(motor_pin,LOW);
+    delay(5000);
+  }
+  if (sen_2_read < 300){
+//    digitalWrite(led,HIGH);
+//    delay(1000);
+//    digitalWrite(led,LOW);
+//    delay(1000);
+    
+    digitalWrite(motor_pin,HIGH);
+    delay(2000);
+    digitalWrite(motor_pin,LOW);
+    delay(5000);
+  }
 }
