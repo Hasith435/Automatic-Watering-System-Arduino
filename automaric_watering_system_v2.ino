@@ -46,27 +46,26 @@ void loop(){
   display.clearDisplay();
   delay(1000);
 
-  if (sen_1_read < 300){
-   
-//    digitalWrite(led,HIGH);
-//    delay(1000);
-//    digitalWrite(led,LOW);
-//    delay(1000);
-    
+  if (sen_1_read < 450){
+    digitalWrite(led,HIGH);
     digitalWrite(motor_pin,HIGH);
-    delay(2000);
+    delay(1000);
+    digitalWrite(led,LOW);
     digitalWrite(motor_pin,LOW);
-    delay(5000);
-  }
-  if (sen_2_read < 300){
-//    digitalWrite(led,HIGH);
-//    delay(1000);
-//    digitalWrite(led,LOW);
-//    delay(1000);
+    delay(1000);
     
-    digitalWrite(motor_pin,HIGH);
-    delay(2000);
-    digitalWrite(motor_pin,LOW);
-    delay(5000);
   }
+  
+
+  if (sen_1_read < 450){
+    digitalWrite(led,HIGH);
+    digitalWrite(motor_pin,HIGH);
+    delay(1000);
+    digitalWrite(led,LOW);
+    digitalWrite(motor_pin,LOW);
+    delay(1000);
+    
+  delay(5000);
+}
+
 }
